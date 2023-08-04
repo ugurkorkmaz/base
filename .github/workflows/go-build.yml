@@ -30,7 +30,7 @@ jobs:
 
       # Step 3: Build the Golang application
       - name: Build ${{ matrix.services }} service.
-        working-directory: services/"${{ matrix.services }}"
+        working-directory: services/${{ matrix.services }}
         run: go build -o ${{ matrix.services }}
 
       # Step 4: Log in to GitHub Container Registry
@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: "${{ matrix.services }}"
-          file: "services/${{ matrix.services }}/Dockerfile"
+          file: services/${{ matrix.services }}/Dockerfile
           push: true
           tags: >-
             ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}:${{ github.sha }}
