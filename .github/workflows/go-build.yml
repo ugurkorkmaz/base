@@ -30,18 +30,12 @@ jobs:
         working-directory: services/${{ matrix.services }}
         run: go build -o ${{ matrix.services }}
 
-      - name: Extract image metadata for ${{ matrix.services }}
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}
-
       - name: Build and push ${{ matrix.services }}
         uses: docker/build-push-action@v4
         with:
           context: "services/${{ matrix.services }}"
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}:${{ github.sha }}
+          tags: ${{ env.REGISTRY }}/${{ env.OWNER }}/base/${{ matrix.services }}:${{ github.sha }}
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
