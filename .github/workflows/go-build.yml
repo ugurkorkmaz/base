@@ -28,7 +28,7 @@ jobs:
 
       - name: Build ${{ matrix.services }} service
         working-directory: services/${{ matrix.services }}
-        run: go build -o app
+        run: go build -o ${{ matrix.services }}
 
       - name: Extract image metadata for ${{ matrix.services }}
         id: meta
