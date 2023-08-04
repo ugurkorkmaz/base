@@ -37,11 +37,12 @@ The "protos" directory contains Protobuf files that define the schema and struct
 -   [Main Protobuf](/protos/main.proto): The main Protobuf file serves as the entry point, defining the basic structure of the data used throughout the application.
 
 -   [Exception Protobufs](/protos/exception): This subdirectory contains Protobuf files related to exceptions and error handling in the application.
+    <details><summary>:arrow_down:</summary>
 
-    -   [Code Proto](/protos/exception/code.proto): The "code.proto" file defines error codes used in the application.
+    -   [Code Proto](/protos/exception/code.proto): The file defines error codes used in the application.
 
-    -   [Throw Proto](/protos/exception/throw.proto): The "throw.proto" file contains definitions for various exceptions that can be thrown by the services.
-
+    -   [Throw Proto](/protos/exception/throw.proto): The file contains definitions for various exceptions that can be thrown by the services.
+    </details>
 License
 -------
 
@@ -51,5 +52,13 @@ Makefile
 --------
 
 The [Makefile](/Makefile) contains useful build and development scripts to ease the development process.
+
+
+<details>
+  <summary>Detaylar</summary>
+
+  Bu bölüm, açılır-kapanır olacak şekilde gizli içeriğe sahiptir.
+
+</details>
 
 Feel free to explore each section and dive into the respective folders to get more details about each component and how they work together. If you have any questions or feedback, please don't hesitate to reach out via GitHub issues or contact the project maintainers. Happy coding!
