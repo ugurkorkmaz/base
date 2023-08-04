@@ -42,7 +42,7 @@ jobs:
         with:
           context: "services/${{ matrix.services }}"
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}:${{ github.sha }}
+          tags: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}:latest
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
