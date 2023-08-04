@@ -1,4 +1,5 @@
 name: Build and Push Golang Docker Images
+
 on:
   push:
     branches:
@@ -25,7 +26,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.20
+          go-version: stable
 
       # Step 3: Build the Golang application
       - name: Build ${{ matrix.services }} service.
