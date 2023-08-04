@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+// Package for the exception messages.
+package base.exception;
+
+// Define the Go package name for the generated code.
+option go_package = "exception";
+
+// Import the "code.proto" file containing the error codes.
+import "base/code.proto";
+
+// Message representing an Exception.
+message Throw {
+    // The error code associated with the Exception.
+    // Use the "Code" enum from "code.proto" to define the error code.
+    base.exception.Code code = 1;
+
+    // A human-readable error message providing additional details.
+    string message = 2;
+}

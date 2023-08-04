@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+// Package for the exception codes.
+package base.exception;
+
+// Define the Go package name for the generated code.
+option go_package = "exception";
+
+// Enum for defining error codes.
+enum Code {
+    // Indicates a successful operation.
+    OK = 0;
+}
