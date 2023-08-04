@@ -39,10 +39,11 @@ jobs:
       - name: Build and push ${{ matrix.services }}
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}:${{ matrix.services }}"
-          file: services/${{ matrix.services }}/Dockerfile
+          context: "services/${{ matrix.services }}"
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
