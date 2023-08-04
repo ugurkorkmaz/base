@@ -54,11 +54,4 @@ Makefile
 The [Makefile](/Makefile) contains useful build and development scripts to ease the development process.
 
 
-<details>
-  <summary>Detaylar</summary>
-
-  Bu bölüm, açılır-kapanır olacak şekilde gizli içeriğe sahiptir.
-
-</details>
-
 Feel free to explore each section and dive into the respective folders to get more details about each component and how they work together. If you have any questions or feedback, please don't hesitate to reach out via GitHub issues or contact the project maintainers. Happy coding!
