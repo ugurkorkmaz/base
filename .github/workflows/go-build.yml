@@ -18,37 +18,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code repository
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Step 2: Setup Go environment
       - name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: '1.20'
+          go-version: "1.20"
 
-      # Step 3: Build the Golang application
-      - name: Build ${{ matrix.services }} service.
+      - name: Build ${{ matrix.services }} service
         working-directory: services/${{ matrix.services }}
         run: go build -o app
 
-      # Step 4: Log in to GitHub Container Registry
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v2
+      - name: Extract image metadata for ${{ matrix.services }}
+        id: meta
+        uses: docker/metadata-action@v4
         with:
-          registry: "${{ env.REGISTRY }}"
-          username: "${{ github.actor }}"
-          password: "${{ secrets.GH_TOKEN }}"
+          images: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}
 
-      # Step 5: Build Docker image and push to GitHub Container Registry
-      - name: "Build and push ${{ matrix.services }} service"
+      - name: Build and push ${{ matrix.services }}
         uses: docker/build-push-action@v4
         with:
-          context: "${{ matrix.services }}"
+          context: ${{ matrix.services }}
           file: services/${{ matrix.services }}/Dockerfile
           push: true
-          tags: >-
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ matrix.services }}:${{ github.sha }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           secrets: |
             GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
