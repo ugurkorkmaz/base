@@ -19,11 +19,13 @@ The "charts" directory is used to manage dependencies and Helm charts for the ap
 
 ### Dependency Charts
 
--   [Minio Chart](/charts/dependency/minio): The Minio chart sets up an object storage server, enabling easy storage and retrieval of files.
+-   [Minio ](/charts/dependency/minio): The Minio chart sets up an object storage server, enabling easy storage and retrieval of files.
 
--   [Traefik Chart](/charts/dependency/traefik): Traefik is a popular reverse proxy and load balancer that simplifies routing and SSL configuration.
+-   [Traefik ](/charts/dependency/traefik): Traefik is a popular reverse proxy and load balancer that simplifies routing and SSL configuration.
 
--   [Zitadel Chart](/charts/dependency/zitadel): The Zitadel chart helps integrate Zitadel, an open-source IAM (Identity and Access Management) solution, into the application.
+-   [Zitadel ](/charts/dependency/zitadel): The Zitadel chart helps integrate Zitadel, an open-source IAM (Identity and Access Management) solution, into the application.
+  
+-   [CockroachDB ](https://chat.openai.com/charts/dependency/cockroachdb): The CockroachDB chart sets up a distributed SQL database, providing scalable and reliable data storage.
 
 ### Services Chart
 
@@ -37,12 +39,9 @@ The "protos" directory contains Protobuf files that define the schema and struct
 -   [Main Protobuf](/protos/main.proto): The main Protobuf file serves as the entry point, defining the basic structure of the data used throughout the application.
 
 -   [Exception Protobufs](/protos/exception): This subdirectory contains Protobuf files related to exceptions and error handling in the application.
-    <details><summary>:arrow_down:</summary>
-
     -   [Code Proto](/protos/exception/code.proto): The file defines error codes used in the application.
 
     -   [Throw Proto](/protos/exception/throw.proto): The file contains definitions for various exceptions that can be thrown by the services.
-    </details>
 License
 -------
 
