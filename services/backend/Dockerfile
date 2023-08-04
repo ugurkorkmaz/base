@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN apk --no-cache add ca-certificates
 
-COPY services/backend/app /app/backend
+COPY app /app/backend
 
 WORKDIR /app
 
