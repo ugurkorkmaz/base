@@ -1,0 +1,8 @@
+version: v1
+plugins:
+  - plugin: es
+    opt: target=ts
+    out: services/frontend/src/lib/grpc
+  - name: connect-es
+    out: services/frontend/src/lib/grpc
+    opt: target=ts
