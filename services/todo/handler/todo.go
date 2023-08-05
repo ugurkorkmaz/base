@@ -112,7 +112,7 @@ func (ts *TodoServer) ListTasks(ctx context.Context, req *pb.ListTasksRequest) (
 			Description: todo.Description,
 			Completed:   todo.Completed,
 			CraeteDate:  todo.CraeteDate,
-			UpdateDate:  todo.CraeteDate,
+			UpdateDate:  todo.UpdateDate,
 		})
 	}
 
