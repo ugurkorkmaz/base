@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN apk --no-cache add ca-certificates
 
-COPY ./backend /app/backend 
+COPY ./todo /app/todo 
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ RUN ls -la
 
 EXPOSE 8080
 
-ENTRYPOINT [ "./backend" ]
+ENTRYPOINT [ "./todo" ]

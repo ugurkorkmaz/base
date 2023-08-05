@@ -1,6 +1,0 @@
-version: v1
-plugins:
-  - plugin: go
-    out: services/backend/grpc
-  - plugin: go-grpc
-    out: services/backend/grpc

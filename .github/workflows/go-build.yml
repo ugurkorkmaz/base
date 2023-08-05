@@ -15,7 +15,7 @@ jobs:
   build:
     strategy:
       matrix:
-        services: ["backend"]
+        services: ["todo"]
 
     runs-on: ubuntu-latest
 
