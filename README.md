@@ -35,16 +35,8 @@ Protos
 
 The "protos" directory contains Protobuf files that define the schema and structure of data used in the application.
 
--   [Main Protobuf](/protos/main.proto): The main Protobuf file serves as the entry point, defining the basic structure of the data used throughout the application.
+-   [Todo Protobuf](/protos/base/todo.proto): This protobuf schema defines a basic todo application's data structure with fields for tasks and their properties. It also includes service methods for adding, retrieving, updating, and deleting tasks
 
--   [Exception Protobufs](/protos/exception): This subdirectory contains Protobuf files related to exceptions and error handling in the application.
-    -   [Code Proto](/protos/exception/code.proto): The file defines error codes used in the application.
-
-    -   [Throw Proto](/protos/exception/throw.proto): The file contains definitions for various exceptions that can be thrown by the services.
-License
--------
-
-This project is licensed under the terms of the [LICENSE](/LICENSE) file.
 
 Makefile
 --------
@@ -52,4 +44,24 @@ Makefile
 The [Makefile](/Makefile) contains useful build and development scripts to ease the development process.
 
 
-Feel free to explore each section and dive into the respective folders to get more details about each component and how they work together. If you have any questions or feedback, please don't hesitate to reach out via GitHub issues or contact the project maintainers. Happy coding!
+Makefile Commands and Descriptions
+
+| Command              | Description                                 |
+|----------------------|---------------------------------------------|
+| `make help`          | Display this help message.                 |
+| `make up`            | Deploy Helm charts.                         |
+| `make down`          | Uninstall Helm charts.                      |
+| `make stop`          | Stop running Helm releases for services.    |
+| `make start`         | Start previously stopped Helm releases.    |
+| `make up-dependency` | Deploy dependency Helm charts only.         |
+| `make up-service`    | Deploy service Helm charts only.            |
+| `make down-dependency`| Uninstall dependency Helm charts only.      |
+| `make down-service`  | Uninstall service Helm charts only.         |
+
+## Note:
+
+Before using these commands, ensure you have the required Helm charts and configurations in the appropriate directories specified in the Makefile. Also, make sure you have set the environment variables in the `.env` file appropriately.
+
+-------
+
+This project is licensed under the terms of the [LICENSE](/LICENSE) file.
