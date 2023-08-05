@@ -4,7 +4,7 @@ package base.todo.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "todo";
+option go_package = "todo/";
 
 message Task {
   string id = 1;
