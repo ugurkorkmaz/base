@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package base.todo.v1;
+
+option go_package ="grpc/todo";
+
+message Task {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    bool completed = 4;
+    google.protobuf.Timestamp due_date = 5;
+}
+
+message TaskList {
+    repeated Task tasks = 1;
+}
+
+message GetTaskRequest {
+    string id = 1;
+}
+
+message DeleteTaskRequest {
+    string id = 1;
+}
+
+message ListTasksRequest {}
+
+service TodoService {
+    rpc AddTask(Task) returns (Task);
+    rpc GetTask(GetTaskRequest) returns (Task);
+    rpc UpdateTask(Task) returns (Task);
+    rpc DeleteTask(DeleteTaskRequest) returns (Task);
+    rpc ListTasks(ListTasksRequest) returns (TaskList);
+}

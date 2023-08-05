@@ -1,0 +1,12 @@
+version: v1
+name: buf.build/ugurkorkmaz/base
+deps:
+  - buf.build/googleapis/googleapis
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - MINIMAL
+  ignore:
+    - base/todo.proto
