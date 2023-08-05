@@ -14,7 +14,7 @@ import (
 
 // Todo struct implements gRPC methods for the TodoService server
 type TodoServer struct {
-	pb.UnimplementedTodoServiceServer
+	pb.TodoServiceServer
 	todos []*pb.Task
 }
 
