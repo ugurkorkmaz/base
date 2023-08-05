@@ -11,7 +11,7 @@ Services
 
 The "services" directory holds microservices that make up the core functionality of the application. Here are the services:
 
--   [Backend Service](/services/backend): This service contains the backend logic of the application. It is responsible for handling data processing and business logic.
+-   [Todo Service](/services/todo): This service contains the Todo logic of the application. It is responsible for handling data processing and business logic.
 
 -   [Frontend Service](/services/frontend): The frontend service is responsible for the user interface of the application. It handles rendering and user interactions.
 
@@ -29,10 +29,6 @@ The "charts" directory is used to manage dependencies and Helm charts for the ap
 -   [Zitadel ](/charts/dependency/zitadel): The Zitadel chart helps integrate Zitadel, an open-source IAM (Identity and Access Management) solution, into the application.
   
 -   [CockroachDB ](https://chat.openai.com/charts/dependency/cockroachdb): The CockroachDB chart sets up a distributed SQL database, providing scalable and reliable data storage.
-
-### Services Chart
-
-The "services" chart is responsible for deploying the core microservices of the application. It combines the backend and frontend services.
 
 Protos
 ------
