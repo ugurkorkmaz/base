@@ -22,10 +22,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TodoServiceClient interface {
-	AddTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Task, error)
+	AddTask(ctx context.Context, in *AddTaskRequest, opts ...grpc.CallOption) (*Task, error)
 	GetTask(ctx context.Context, in *GetTaskRequest, opts ...grpc.CallOption) (*Task, error)
-	UpdateTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Task, error)
-	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*Task, error)
+	UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*UpdateTaskResponse, error)
+	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*DeleteTaskResponse, error)
 	ListTasks(ctx context.Context, in *ListTasksRequest, opts ...grpc.CallOption) (*TaskList, error)
 }
 
@@ -37,7 +37,7 @@ func NewTodoServiceClient(cc grpc.ClientConnInterface) TodoServiceClient {
 	return &todoServiceClient{cc}
 }
 
-func (c *todoServiceClient) AddTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Task, error) {
+func (c *todoServiceClient) AddTask(ctx context.Context, in *AddTaskRequest, opts ...grpc.CallOption) (*Task, error) {
 	out := new(Task)
 	err := c.cc.Invoke(ctx, "/base.todo.v1.TodoService/AddTask", in, out, opts...)
 	if err != nil {
@@ -55,8 +55,8 @@ func (c *todoServiceClient) GetTask(ctx context.Context, in *GetTaskRequest, opt
 	return out, nil
 }
 
-func (c *todoServiceClient) UpdateTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Task, error) {
-	out := new(Task)
+func (c *todoServiceClient) UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*UpdateTaskResponse, error) {
+	out := new(UpdateTaskResponse)
 	err := c.cc.Invoke(ctx, "/base.todo.v1.TodoService/UpdateTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -64,8 +64,8 @@ func (c *todoServiceClient) UpdateTask(ctx context.Context, in *Task, opts ...gr
 	return out, nil
 }
 
-func (c *todoServiceClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*Task, error) {
-	out := new(Task)
+func (c *todoServiceClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*DeleteTaskResponse, error) {
+	out := new(DeleteTaskResponse)
 	err := c.cc.Invoke(ctx, "/base.todo.v1.TodoService/DeleteTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -86,10 +86,10 @@ func (c *todoServiceClient) ListTasks(ctx context.Context, in *ListTasksRequest,
 // All implementations must embed UnimplementedTodoServiceServer
 // for forward compatibility
 type TodoServiceServer interface {
-	AddTask(context.Context, *Task) (*Task, error)
+	AddTask(context.Context, *AddTaskRequest) (*Task, error)
 	GetTask(context.Context, *GetTaskRequest) (*Task, error)
-	UpdateTask(context.Context, *Task) (*Task, error)
-	DeleteTask(context.Context, *DeleteTaskRequest) (*Task, error)
+	UpdateTask(context.Context, *UpdateTaskRequest) (*UpdateTaskResponse, error)
+	DeleteTask(context.Context, *DeleteTaskRequest) (*DeleteTaskResponse, error)
 	ListTasks(context.Context, *ListTasksRequest) (*TaskList, error)
 	mustEmbedUnimplementedTodoServiceServer()
 }
@@ -98,16 +98,16 @@ type TodoServiceServer interface {
 type UnimplementedTodoServiceServer struct {
 }
 
-func (UnimplementedTodoServiceServer) AddTask(context.Context, *Task) (*Task, error) {
+func (UnimplementedTodoServiceServer) AddTask(context.Context, *AddTaskRequest) (*Task, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddTask not implemented")
 }
 func (UnimplementedTodoServiceServer) GetTask(context.Context, *GetTaskRequest) (*Task, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTask not implemented")
 }
-func (UnimplementedTodoServiceServer) UpdateTask(context.Context, *Task) (*Task, error) {
+func (UnimplementedTodoServiceServer) UpdateTask(context.Context, *UpdateTaskRequest) (*UpdateTaskResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTask not implemented")
 }
-func (UnimplementedTodoServiceServer) DeleteTask(context.Context, *DeleteTaskRequest) (*Task, error) {
+func (UnimplementedTodoServiceServer) DeleteTask(context.Context, *DeleteTaskRequest) (*DeleteTaskResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
 }
 func (UnimplementedTodoServiceServer) ListTasks(context.Context, *ListTasksRequest) (*TaskList, error) {
@@ -127,7 +127,7 @@ func RegisterTodoServiceServer(s grpc.ServiceRegistrar, srv TodoServiceServer) {
 }
 
 func _TodoService_AddTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Task)
+	in := new(AddTaskRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -139,7 +139,7 @@ func _TodoService_AddTask_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/base.todo.v1.TodoService/AddTask",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TodoServiceServer).AddTask(ctx, req.(*Task))
+		return srv.(TodoServiceServer).AddTask(ctx, req.(*AddTaskRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -163,7 +163,7 @@ func _TodoService_GetTask_Handler(srv interface{}, ctx context.Context, dec func
 }
 
 func _TodoService_UpdateTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Task)
+	in := new(UpdateTaskRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -175,7 +175,7 @@ func _TodoService_UpdateTask_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/base.todo.v1.TodoService/UpdateTask",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TodoServiceServer).UpdateTask(ctx, req.(*Task))
+		return srv.(TodoServiceServer).UpdateTask(ctx, req.(*UpdateTaskRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
