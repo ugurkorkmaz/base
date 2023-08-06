@@ -5,10 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  repository: docker pull ghcr.io/ugurkorkmaz/base/todo:latest
+  pullPolicy: Always
+  tag: "main"
 
 imagePullSecrets: []
 nameOverride: ""
