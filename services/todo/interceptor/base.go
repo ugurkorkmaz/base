@@ -10,7 +10,7 @@ import (
 type BaseInterceptor struct{}
 
 func (hw *BaseInterceptor) Unary(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
-	log.Println("Unary Method: ", info.FullMethod)
+	log.Println("Unary  Method: ", info.FullMethod)
 	resp, err := handler(ctx, req)
 	return resp, err
 }
