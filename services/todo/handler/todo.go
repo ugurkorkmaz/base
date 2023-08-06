@@ -26,7 +26,7 @@ func (ts *TodoServer) AddTask(ctx context.Context, req *pb.AddTaskRequest) (*pb.
 		Title:       req.Title,
 		Description: req.Description,
 		Completed:   false,
-		CraeteDate:  timestamppb.Now(),
+		CreateDate:  timestamppb.Now(),
 		UpdateDate:  &timestamppb.Timestamp{},
 	}
 
@@ -48,7 +48,7 @@ func (ts *TodoServer) GetTask(ctx context.Context, req *pb.GetTaskRequest) (*pb.
 				Title:       todo.Title,
 				Description: todo.Description,
 				Completed:   todo.Completed,
-				CraeteDate:  todo.CraeteDate,
+				CreateDate:  todo.CreateDate,
 				UpdateDate:  todo.UpdateDate,
 			}, nil
 		}
@@ -111,7 +111,7 @@ func (ts *TodoServer) ListTasks(ctx context.Context, req *pb.ListTasksRequest) (
 			Title:       todo.Title,
 			Description: todo.Description,
 			Completed:   todo.Completed,
-			CraeteDate:  todo.CraeteDate,
+			CreateDate:  todo.CreateDate,
 			UpdateDate:  todo.UpdateDate,
 		})
 	}
