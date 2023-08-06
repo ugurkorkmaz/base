@@ -10,3 +10,4 @@ lint:
     - MINIMAL
   ignore:
     - base/todo.proto
+    - base/pagination.proto

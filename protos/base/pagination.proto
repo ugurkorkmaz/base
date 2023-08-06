@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package base.v1.pagination;
+
+option go_package = "pagination/";
+
+// Enum to specify the order of results.
+enum Order {
+  // Unspecified order (default value). The server will determine the order.
+  ORDER_UNSPECIFIED = 0;
+  // Ascending order. Results will be arranged in ascending order.
+  ASCENDING = 1;
+  // Descending order. Results will be arranged in descending order.
+  DESCENDING = 2;
+}
+
+// Request message with pagination parameters.
+message RequestWithPagination {
+  // Optional: The maximum number of items to return in the response.
+  // If set, the server will limit the number of results to this value.
+  // If not provided, the server will determine the appropriate limit.
+  optional int32 limit = 1;
+
+  // Optional: Cursor to retrieve the next page of results.
+  // When paginating through a large set of results, the server may return a
+  // cursor in the response. This cursor can be used to retrieve the next page
+  // of results. If not provided, the server will start from the beginning.
+  optional string cursor = 2;
+
+  // Optional: Order in which the results should be sorted.
+  // You can specify whether the results should be in ascending or descending order.
+  // If not provided, the server may use a default order.
+  optional Order order_by = 3;
+
+  // Add other request-specific fields here.
+  // For example, you can add filters or search criteria.
+}
+
+// Response message with pagination data.
+message ResponseWithPagination {
+  // Optional: Cursor to retrieve the next page of results.
+  // If the server has more results to display, it will include a cursor in the
+  // response. The client can use this cursor to fetch the next page of data.
+  // The cursor should be a 32-character UUID (e.g., "4dd5f17d-07a9-4c15-aa34-19d98d4c8d6a").
+  optional string next_cursor = 1;
+
+  // Optional: Cursor to retrieve the previous page of results.
+  // If the client wants to navigate back to the previous page of results,
+  // it can use this cursor to fetch the previous set of data.
+  // The cursor should be a 32-character UUID (e.g., "9a380e19-63b4-4e47-b5f7-8f8994e5e65d").
+  optional string previous_cursor = 2;
+
+  // Add other response-specific fields here.
+  // For example, you can include the actual data items in the response.
+}
