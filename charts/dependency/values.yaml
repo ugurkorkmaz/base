@@ -1,0 +1,11 @@
+traefik:
+  enabled: true
+
+cockroach:
+  enabled: true
+
+zitadel:
+  enabled: true
+
+minio:
+  enabled: true

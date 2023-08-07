@@ -1,0 +1,26 @@
+apiVersion: v2
+name: dependency
+description: A Helm chart for Kubernetes
+type: application
+version: 0.0.1
+appVersion: 0.0.1
+dependencies:  
+  - name: traefik
+    repository: https://traefik.github.io/charts
+    condition: traefik.enabled
+    version: 23.2.0
+
+  - name: cockroach
+    repository: https://charts.cockroachdb.com/
+    condition: cockroachdb.enabled
+    version: 11.1.4
+
+  - name: zitadel
+    repository: https://charts.zitadel.com
+    condition: zitadel.enabled
+    version: 5.0.0
+
+  - name: minio
+    repository: https://charts.bitnami.com/bitnami
+    condition: minio.enabled
+    version: 12.6.12
