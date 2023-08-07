@@ -10,7 +10,7 @@ dependencies:
     condition: traefik.enabled
     version: 23.2.0
 
-  - name: cockroach
+  - name: cockroachdb
     repository: https://charts.cockroachdb.com/
     condition: cockroachdb.enabled
     version: 11.1.4
