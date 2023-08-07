@@ -1,3 +1,6 @@
+argo-cd:
+  enabled: true
+
 traefik:
   enabled: true
 
