@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: base
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Base App
+
+  sourceRepos:
+    - "https://github.com/ugurkorkmaz/base"
+
+  destinations:
+    - namespace: "argocd"
+      server: "https://kubernetes.default.svc"
+
+  clusterResourceWhitelist:
+    - group: ""
+      kind: "Namespace"
+    - group: ""
+      kind: "ClusterRole"
+    - group: ""
+      kind: "ClusterRoleBinding"
+
+  namespaceResourceBlacklist:
+    - group: ""
+      kind: ResourceQuota
+    - group: ""
+      kind: LimitRange
+    - group: ""
+      kind: NetworkPolicy
