@@ -30,3 +30,6 @@ minio:
 
 kratos:
   enabled: false
+
+zitadel:
+  enabled: false
