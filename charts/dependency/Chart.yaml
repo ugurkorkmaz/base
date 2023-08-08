@@ -24,3 +24,8 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: minio.enabled
     version: 12.6.12
+
+  - name: zitadel
+    repository: https://charts.zitadel.com
+    condition: zitadel.enabled
+    version: 5.0.0
