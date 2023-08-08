@@ -10,20 +10,15 @@ dependencies:
     condition: argo-cd.enabled
     version: 5.42.2
 
-  - name: traefik
-    repository: https://traefik.github.io/charts
-    condition: traefik.enabled
-    version: 23.2.0
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+    version: 12.8.0
 
-  - name: cockroachdb
-    repository: https://charts.cockroachdb.com/
-    condition: cockroachdb.enabled
-    version: 11.1.4
-
-  - name: zitadel
-    repository: https://charts.zitadel.com
-    condition: zitadel.enabled
-    version: 5.0.0
+  - name: kratos
+    repository: https://k8s.ory.sh/helm/charts
+    condition: kratos.enabled
+    version: 0.35.0
 
   - name: minio
     repository: https://charts.bitnami.com/bitnami
