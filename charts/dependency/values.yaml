@@ -1,15 +1,8 @@
 argo-cd:
   enabled: false
 
-postgresql:
+cockroachdb:
   enabled: false
-  postgresPassword: root
-  auth:
-    username: admin
-    password: admin
-  databases:
-    - name: base
-    - name: auth
 
 minio:
   enabled: false

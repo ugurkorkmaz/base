@@ -10,10 +10,10 @@ dependencies:
     condition: argo-cd.enabled
     version: 4.7.19
 
-  - name: postgresql
-    repository: https://charts.bitnami.com/bitnami
-    condition: postgresql.enabled
-    version: 12.8.0
+  - name: cockroachdb
+    repository: https://charts.cockroachdb.com/
+    condition: cockroachdb.enabled
+    version: 11.1.5
 
   - name: kratos
     repository: https://k8s.ory.sh/helm/charts
