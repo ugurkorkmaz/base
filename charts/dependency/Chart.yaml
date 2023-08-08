@@ -14,18 +14,13 @@ dependencies:
     repository: https://charts.cockroachdb.com/
     condition: cockroachdb.enabled
     version: 11.1.5
-
-  - name: kratos
-    repository: https://k8s.ory.sh/helm/charts
-    condition: kratos.enabled
-    version: 0.35.0
+    
+  - name: zitadel
+    repository: https://charts.zitadel.com
+    condition: zitadel.enabled
+    version: 5.0.0
 
   - name: minio
     repository: https://charts.bitnami.com/bitnami
     condition: minio.enabled
     version: 12.6.12
-
-  - name: zitadel
-    repository: https://charts.zitadel.com
-    condition: zitadel.enabled
-    version: 5.0.0
