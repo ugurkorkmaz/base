@@ -1,7 +1,7 @@
 dependencies:
 - name: argo-cd
-  repository: https://argoproj.github.io/argo-helm
-  version: 5.42.2
+  repository: https://charts.bitnami.com/bitnami
+  version: 4.7.19
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
   version: 12.8.0
@@ -11,5 +11,5 @@ dependencies:
 - name: minio
   repository: https://charts.bitnami.com/bitnami
   version: 12.6.12
-digest: sha256:bf5357f65853450a1b9744ed4e589b997f4b0216dfbde08da6fa759a0cef97c5
-generated: "2023-08-08T08:01:53.672201163+03:00"
+digest: sha256:68d53494157457c9b135becb4396126fde296f2970da75bf3974aa30c199b8e6
+generated: "2023-08-08T13:16:31.043432437+03:00"

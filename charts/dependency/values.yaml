@@ -2,7 +2,7 @@ argo-cd:
   enabled: false
 
 postgresql:
-  enabled: true
+  enabled: false
   postgresPassword: root
   auth:
     username: admin
@@ -10,12 +10,23 @@ postgresql:
   databases:
     - name: base
     - name: auth
-  
+
 minio:
   enabled: false
+
   auth:
     rootUser: admin
     rootPassword: password
+
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    hostname: "minio.lab.org"
+  
+  apiIngress:
+    enabled: true
+    ingressClassName: "nginx"
+    hostname: "file.lab.org"
 
 kratos:
   enabled: false
