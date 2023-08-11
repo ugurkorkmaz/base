@@ -8,12 +8,6 @@ variable "namespace" {
   description = ""
   default     = "base_project"
 }
-
-variable "charts.dir" {
-  type = string
-  default = "../charts"
-}
-
 variable "registry.url" {
   type = string
   description = ""
