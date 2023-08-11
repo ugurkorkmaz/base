@@ -5,21 +5,17 @@ variable "name" {
 }
 variable "namespace" {
   type        = string
-  description = ""
   default     = "base_project"
 }
 variable "registry_url" {
   type = string
-  description = ""
   default = "ghcr.io"
 }
 
 variable "registry_username" {
   type = string
-  description = ""
   default = "ugurkorkmaz"
 }
 variable "registry_password" {
   type = string
-  description = ""
 }
