@@ -8,18 +8,18 @@ variable "namespace" {
   description = ""
   default     = "base_project"
 }
-variable "registry.url" {
+variable "registry_url" {
   type = string
   description = ""
   default = "ghcr.io"
 }
 
-variable "registry.username" {
+variable "registry_username" {
   type = string
   description = ""
   default = "ugurkorkmaz"
 }
-variable "registry.password" {
+variable "registry_password" {
   type = string
   description = ""
 }

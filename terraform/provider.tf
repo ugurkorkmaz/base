@@ -21,8 +21,8 @@ provider "helm" {
     config_path = "~/.kube/config"
   }
   registry {
-    url = var.registry.url
-    username = var.registry.username
-    password = var.registry.password
+    url = var.registry_url
+    username = var.registry_username
+    password = var.registry_password
   }
 }
